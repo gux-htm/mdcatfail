@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+no<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -181,21 +181,17 @@
                 logoSound.play();
 
                 // Show and animate navbar
-                navbar.style.display = "flex";
-                navbar.style.transform = "translateY(0)";
+                navbar.style.transform = "translateY(0)"; // slide navbar down
 
                 // Move logo up and settle below navbar
-                setTimeout(() => {
-                    logo.style.marginTop = "100px";  // Position logo below navbar
-                    logo.style.transition = "margin 1s ease-in-out";
-                }, 100);
+                logo.style.marginTop = "80px"; // move logo down after navbar appears
 
                 // Show login form with animation
-                loginSection.style.display = 'block';
                 setTimeout(() => {
+                    loginSection.style.display = 'block';
                     loginSection.style.opacity = '1';
                     loginSection.querySelector('form').style.transform = 'translateY(0)';
-                }, 100);
+                }, 1000); // Delay login form appearance for a smooth transition
 
                 // Show footer after a delay (e.g., 5 seconds)
                 setTimeout(() => {
