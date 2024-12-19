@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,65 +7,97 @@
     <title>MDCAT Fail</title>
 </head>
 <body style="background-color: black; color: white; text-align: center; font-family: 'Arial', sans-serif; margin: 0; padding: 0;">
-
     <!-- Navigation Menu -->
-    <nav style="text-align: center; background-color: #222; padding: 10px 0; position: sticky; top: 0; z-index: 1000; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-        <a href="index.html" style="color: #cb9f5e; text-decoration: none; margin: 5px;">Home</a>
-        <a href="courses.html" style="color: #cb9f5e; text-decoration: none; margin: 5px;">Courses</a>
-        <a href="register.html" style="color: #cb9f5e; text-decoration: none; margin: 5px;">Register</a>
-        <a href="aboutus.html" style="color: #cb9f5e; text-decoration: none; margin: 5px;">About Us</a>
-        <a href="contactus.html" style="color: #cb9f5e; text-decoration: none; margin: 5px;">Contact Us</a>
+    <nav id="navbar" style="background-color: #222; padding: 10px 0; position: fixed; top: 0; width: 100%; display: flex; justify-content: center; gap: 10px; transform: translateY(-100%); transition: transform 1s ease-in-out; display: none;">
+        <a href="index.html" style="color: #cb9f5e; text-decoration: none;">Home</a>
+        <a href="courses.html" style="color: #cb9f5e; text-decoration: none;">Courses</a>
+        <a href="register.html" style="color: #cb9f5e; text-decoration: none;">Register</a>
+        <a href="aboutus.html" style="color: #cb9f5e; text-decoration: none;">About Us</a>
+        <a href="contactus.html" style="color: #cb9f5e; text-decoration: none;">Contact Us</a>
     </nav>
-    
-    <!-- Header Section -->
+
+    <!-- Logo -->
     <header>
-        <img src="https://i.postimg.cc/cJzdRhcZ/M-pe.png" 
-            style="width: 90%; max-width: 500px; height: auto; margin: 20px auto; display: block;">
-        <marquee behavior="scroll" direction="left" style="font-size: 1.5rem; font-weight: bold;">
-            <p style="margin: 0;">Let's Fail The Failure</p>
-        </marquee>
+        <img id="logo" src="https://i.postimg.cc/cJzdRhcZ/M-pe.png" alt="Logo" style="width: 90%; max-width: 500px; cursor: pointer; animation: fadeIn 1s ease-in-out;">
+        <audio id="logo-sound" src="your-sound-file.mp3"></audio>
     </header>
 
-    <!-- Login Form Section -->
-    <section id="login" style="margin: 100px auto; width: 90%; max-width: 400px; text-align: left;">
-        <form style="background-color: rgba(255,255,255,0.13); border-radius: 10px; backdrop-filter: blur(10px); border: 2px solid rgba(255,255,255,0.1); box-shadow: 0 0 40px rgba(8,7,16,0.6); padding: 40px;">
-            <h3 style="font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 500; line-height: 42px; text-align: center; color: #ffffff; margin-bottom: 20px;">Login Here</h3>
+    <!-- Login Form -->
+    <section id="login" style="margin: 100px auto; width: 90%; max-width: 400px; text-align: left; display: none; opacity: 0; transition: opacity 1s;">
+        <form style="background-color: rgba(255,255,255,0.1); border-radius: 10px; backdrop-filter: blur(12px); border: 2px solid rgba(255,255,255,0.15); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); padding: 40px; transform: translateY(50px); transition: transform 0.8s, opacity 1s;">
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.8rem; font-weight: 600; text-align: center; color: #ffffff; margin-bottom: 20px;">
+                Login Here
+            </h3>
+            <label for="username" style="font-size: 1rem; font-weight: 500; color: #ffffff; display: block; margin-bottom: 10px; font-family: 'Poppins', sans-serif;">Email</label>
+            <input type="email" id="username" placeholder="Enter your email" style="width: 100%; height: 50px; padding: 0 10px; font-size: 1rem; color: #fff; background-color: rgba(255,255,255,0.07); border: none; border-radius: 5px; outline: none; margin-bottom: 20px; font-family: 'Poppins', sans-serif;">
 
-            <label for="username" style="display: block; margin-top: 20px; font-size: 16px; font-weight: 500; color: #ffffff; font-family: 'Poppins', sans-serif;">Email</label>
-            <input type="text" placeholder="Enter your email" id="username" style="display: block; height: 50px; width: 100%; background-color: rgba(255,255,255,0.07); border-radius: 3px; padding: 0 10px; margin-top: 8px; font-size: 14px; font-weight: 300; font-family: 'Poppins', sans-serif; color: #ffffff; outline: none; border: none;">
+            <label for="password" style="font-size: 1rem; font-weight: 500; color: #ffffff; display: block; margin-bottom: 10px; font-family: 'Poppins', sans-serif;">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" style="width: 100%; height: 50px; padding: 0 10px; font-size: 1rem; color: #fff; background-color: rgba(255,255,255,0.07); border: none; border-radius: 5px; outline: none; margin-bottom: 20px; font-family: 'Poppins', sans-serif;">
 
-            <label for="password" style="display: block; margin-top: 20px; font-size: 16px; font-weight: 500; color: #ffffff; font-family: 'Poppins', sans-serif;">Password</label>
-            <input type="password" placeholder="Password" id="password" style="display: block; height: 50px; width: 100%; background-color: rgba(255,255,255,0.07); border-radius: 3px; padding: 0 10px; margin-top: 8px; font-size: 14px; font-weight: 300; font-family: 'Poppins', sans-serif; color: #ffffff; outline: none; border: none;">
-
-            <div style="margin-top: 15px; display: flex; align-items: center;">
-                <input type="checkbox" id="remember-me" style="width: 18px; height: 18px; margin-right: 10px; cursor: pointer;">
-                <label for="remember-me" style="font-size: 14px; font-weight: 500; color: #ffffff; font-family: 'Poppins', sans-serif; cursor: pointer;">Remember Me</label>
+            <div style="margin: 20px 0; display: flex; align-items: center;">
+                <input type="checkbox" id="remember-me" style="width: 20px; height: 20px; margin-right: 10px; cursor: pointer;">
+                <label for="remember-me" style="color: #ffffff; font-size: 1rem; font-family: 'Poppins', sans-serif; cursor: pointer;">Remember Me</label>
             </div>
 
-            <button style="margin-top: 30px; width: 100%; background-color: #cb9f5e; color: black; padding: 15px 0; font-size: 18px; font-weight: 600; border-radius: 5px; cursor: pointer; font-family: 'Poppins', sans-serif; outline: none; border: none;">
-                <a href="userdashboard.html" style="text-decoration: none; color: inherit;">Log In</a>
+            <button type="button" style="width: 100%; padding: 15px; font-size: 1.2rem; font-weight: 600; text-align: center; color: black; background-color: #cb9f5e; border: none; border-radius: 5px; cursor: pointer; font-family: 'Poppins', sans-serif;">
+                Log In
             </button>
 
-            <div style="margin-top: 30px; display: flex; justify-content: space-between; gap: 15px;">
-    <!-- Google Button -->
-    <button style="background-color: #cb9f5e; border-radius: 3px; padding: 10px 20px; text-align: center; cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 500; color:black; border: none; flex: 1;">
-        <i class="fab fa-google" style="margin-right: 8px;"></i> Google
-    </button>
+            <div style="display: flex; justify-content: space-between; gap: 10px; margin: 20px 0;">
+                <button type="button" style="width: 100%; padding: 10px; font-size: 1rem; font-weight: 500; text-align: center; background-color: #cb9f5e; color: black; border: none; border-radius: 5px; cursor: pointer; font-family: 'Poppins', sans-serif;">
+                    Google
+                </button>
+                <button type="button" style="width: 100%; padding: 10px; font-size: 1rem; font-weight: 500; text-align: center; background-color: #cb9f5e; color: black; border: none; border-radius: 5px; cursor: pointer; font-family: 'Poppins', sans-serif;">
+                    Facebook
+                </button>
+            </div>
 
-    <!-- Facebook Button -->
-    <button style="background-color: #cb9f5e; border-radius: 3px; padding: 10px 20px; text-align: center; cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 500; color:black; border: none; flex: 1;">
-        <i class="fab fa-facebook" style=" margin-right: 8px;"></i> Facebook
-    </button>
-</div>
-<a href="register.html" style="color: #ffffff; text-decoration: none;">Don't have an account?</a>
-
+            <p style="text-align: center; margin-top: 20px; color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1rem;">
+                <a href="register.html" style="color: #cb9f5e; text-decoration: none;">Don't have an account?</a>
+            </p>
         </form>
     </section>
 
-    <!-- Footer Section -->
-    <footer style="text-align: center; color: #cb9f5e; position: relative; margin-top: 50px;">
+    <footer id="footer" style="display: none;">
         <p>&copy; 2025 All Rights Reserved.</p>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const logo = document.getElementById("logo");
+            const navbar = document.getElementById("navbar");
+            const loginSection = document.getElementById("login");
+            const logoSound = document.getElementById("logo-sound");
+            const footer = document.getElementById("footer");
+
+            logo.addEventListener("click", () => {
+                // Play sound
+                logoSound.play();
+
+                // Show and animate navbar
+                navbar.style.display = "flex";
+                navbar.style.transform = "translateY(0)";
+
+                // Move logo up
+                logo.style.animation = "none"; // Reset animation
+                setTimeout(() => {
+                    logo.style.marginTop = "100px";
+                    logo.style.transition = "margin 1s ease-in-out";
+                }, 100);
+
+                // Show login form with animation
+                loginSection.style.display = 'block';
+                setTimeout(() => {
+                    loginSection.style.opacity = '1';
+                    loginSection.querySelector('form').style.transform = 'translateY(0)';
+                }, 100);
+
+                
+                setTimeout(() => {
+                    footer.style.display = "block";
+                }, 50);
+            });
+        });
+    </script>
 </body>
 </html>
