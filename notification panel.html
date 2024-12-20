@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notification Panel</title>
+  <style>
+    @charset "UTF-8";
+    @import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
+
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --app-container: #f3f6fd;
+      --main-color: #1f1c2e;
+      --secondary-color: #4A4A4A;
+      --link-color: #1f1c2e;
+      --link-color-hover: #c3cff4;
+      --link-color-active: #fff;
+      --link-color-active-bg: #1f1c2e;
+      --projects-section: #fff;
+      --more-list-bg: #fff;
+      --more-list-bg-hover: #f6fbff;
+      --more-list-shadow: rgba(209, 209, 209, 0.4);
+      --button-bg: #1f1c24;
+      --search-area-bg: #fff;
+      --star: #1ff1c2e;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100vh;
+      margin: 0;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      background-color: #0000; /* Transparent background */
+    }
+
+    .app-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background-color: var(--app-container);
+      transition: 0.2s;
+      max-width: 1800px;
+background-color:black;
+    }
+
+    .app-content {
+      display: flex;
+      height: 100%;
+      overflow: hidden;
+      padding: 16px 24px 24px 0;
+    }
+
+    .app-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 16px 24px;
+      position: relative;
+    }
+
+    .app-header-left, .app-header-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .app-header-left {
+      flex-grow: 1;
+    }
+
+    .app-header-right button {
+      margin-left: 10px;
+    }
+
+    .app-icon {
+      width: 26px;
+      height: 2px;
+      border-radius: 4px;
+      background-color:#CB9F5E;
+      position: relative;
+    }
+
+    .app-icon:before, .app-icon:after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 2px;
+      border-radius: 4px;
+      background-color:#CB9F5E;
+      left: 50%;
+      transform: translatex(-50%);
+    }
+
+    .app-icon:before {
+      top: -6px;
+    }
+
+    .app-icon:after {
+      bottom: -6px;
+    }
+
+    .app-name {
+      color: var(--main-color);
+      margin: 0;
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 700;
+      margin: 0 32px;
+    }
+
+    .notification-btn {
+      color: var(--main-color);
+      padding: 0;
+      border: 0;
+      background-color: transparent;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-btn {
+      padding: 0;
+      border: 0;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      padding-left: 12px;
+      border-left: 2px solid #ddd;
+    }
+
+    .profile-btn img {
+      width: 32px;
+      height: 32px;
+      -o-object-fit: cover;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 4px;
+    }
+
+    .profile-btn span {
+      color: var(--main-color);
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 700;
+    }
+
+    .page-content {
+      flex: 1;
+      width: 100%;
+    }
+
+    .app-sidebar {
+      padding: 40px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .app-sidebar-link {
+      color: var(--main-color);
+      margin: 16px 0;
+      transition: 0.2s;
+      border-radius: 50%;
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app-sidebar-link:hover {
+      background-color: var(--link-color-hover);
+      color: var(--link-color-active);
+    }
+
+    .app-sidebar-link.active {
+      color: var(--link-color-active);
+    }
+
+    /* Notification Panel Styles */
+   .notification-panel {
+  position: fixed;
+  top: 51%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  color: white;
+  padding: 20px;
+  width: 81%;
+  max-height: 70vh; /* You can adjust this value based on how tall you want the panel */
+  border-radius: 10px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+    .notification-panel ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .notification-panel li {
+      padding: 10px;
+     height: max-content;
+       width: 81%;
+      border-bottom: 1px solid #333;
+    }
+
+    .notification-panel li:last-child {
+      border-bottom: none;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div class="app-header">
+      <div class="app-header-left">
+        <button class="notification-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"stroke="#CB9F5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
+        </button>
+        <p class="app-name" style="color: white;">Notification</p>
+      </div>
+      <div class="app-header-right">
+        <button class="profile-btn">
+          <img src="https://assets.codepen.io/3306515/IMG_2025.jpg" />
+          <span style="color: white;">Ariba Faiz</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="app-content">
+      <div class="app-sidebar">
+        <a href="index,.html" class="app-sidebar-link active">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"stroke="#CB9F5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" /></svg>
+        </a>
+        <a href="" class="app-sidebar-link">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#CB9F5E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-pie-chart" viewBox="0 0 24 24">
+            <defs />
+            <path d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z" />
+          </svg>
+        </a>
+        <a href="" class="app-sidebar-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#CB9F5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" /></svg>
+        </a>
+        <a href="" class="app-sidebar-link">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#CB9F5E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-settings" viewBox="0 0 24 24">
+            <defs />
+            <circle cx="12" cy="12" r="3" />
+            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scrollable Notification Panel -->
+    <div class="notification-panel">
+     <ul>
+  <li>
+    <h4 style="color: #CB9F5E;">New Course Alert</h4>
+    <p>Advanced Python Programming is now available!</p>
+  </li>
+  <li>
+    <h4 style="color: #CB9F5E;">Assignment Reminder</h4>
+    <p>Your assignment for 'Cyber Security Basics' is due tomorrow.</p>
+  </li>
+  <li>
+    <h4 style="color: #CB9F5E;">Milestone Achieved</h4>
+    <p>Congratulations! You've completed 50% of the 'Data Science with R' course.</p>
+  </li>
+  <li>
+    <h4 style="color: #CB9F5E;">Live Webinar</h4>
+    <p>Reminder: Live webinar on 'AI Trends 2024' starts in 2 hours.</p>
+  </li>
+  <li>
+    <h4 style="color: #CB9F5E;">Quiz Results</h4>
+    <p>Quiz results are out for 'HTML and CSS Fundamentals'. Check your score now.</p>
+  </li>
+  <li>
+    <h4 style="color: #CB9F5E;">Lesson Update</h4>
+    <p>Update: Lesson 5 of 'JavaScript for Beginners' has been uploaded.</p>
+  </li>
+  <li>
+    <h4 style="color: #CB9F5E;">Badge Unlocked</h4>
+    <p>You've unlocked a badge: 'Fast Learner'! Keep up the great work.</p>
+  </li>
+  <li>
+    <h4 style="color: #CB9F5E;">New Forum Discussion</h4>
+    <p>Join the forum on 'Best Practices in Ethical Hacking'.</p>
+  </li>
+  <li>
+    <h4 style="color: #CB9F5E;">Subscription Expiry</h4>
+    <p>Your subscription is expiring in 3 days. Renew now to continue learning.</p>
+  </li>
+  <li>
+    <h4 style="color: #CB9F5E;">Achievement Unlocked</h4>
+    <p>Completed your first course on the platform!</p>
+  </li>
+</ul>
+
+      </ul>
+      
+    </div>
+
+  </div>
+</body>
+</html>
