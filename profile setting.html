@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>profile setting</title>
+  <style>
+    @charset "UTF-8";
+    @import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
+
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --app-container: #f3f6fd;
+      --main-color: #1f1c2e;
+      --secondary-color: #4A4A4A;
+      --link-color: #1f1c2e;
+      --link-color-hover: #c3cff4;
+      --link-color-active: #fff;
+      --link-color-active-bg: #1f1c2e;
+      --projects-section: #fff;
+      --more-list-bg: #fff;
+      --more-list-bg-hover: #f6fbff;
+      --more-list-shadow: rgba(209, 209, 209, 0.4);
+      --button-bg: #1f1c24;
+      --search-area-bg: #fff;
+      --star: #1ff1c2e;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100vh;
+      margin: 0;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      background-color: #0000; /* Transparent background */
+    }
+
+    .app-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background-color: var(--app-container);
+      transition: 0.2s;
+      max-width: 1800px;
+background-color:black;
+    }
+
+    .app-content {
+      display: flex;
+      height: 100%;
+      overflow: hidden;
+      padding: 16px 24px 24px 0;
+    }
+
+    .app-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 16px 24px;
+      position: relative;
+    }
+
+    .app-header-left, .app-header-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .app-header-left {
+      flex-grow: 1;
+    }
+
+    .app-header-right button {
+      margin-left: 10px;
+    }
+
+    .app-icon {
+      width: 26px;
+      height: 2px;
+      border-radius: 4px;
+      background-color:#CB9F5E;
+      position: relative;
+    }
+
+    .app-icon:before, .app-icon:after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 2px;
+      border-radius: 4px;
+      background-color:#CB9F5E;
+      left: 50%;
+      transform: translatex(-50%);
+    }
+
+    .app-icon:before {
+      top: -6px;
+    }
+
+    .app-icon:after {
+      bottom: -6px;
+    }
+
+    .app-name {
+      color: var(--main-color);
+      margin: 0;
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 700;
+      margin: 0 32px;
+    }
+
+    .notification-btn {
+      color: var(--main-color);
+      padding: 0;
+      border: 0;
+      background-color: transparent;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-btn {
+      padding: 0;
+      border: 0;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      padding-left: 12px;
+      border-left: 2px solid #ddd;
+    }
+
+    .profile-btn img {
+      width: 32px;
+      height: 32px;
+      -o-object-fit: cover;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 4px;
+    }
+
+    .profile-btn span {
+      color: var(--main-color);
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 700;
+    }
+
+    .page-content {
+      flex: 1;
+      width: 100%;
+    }
+
+    .app-sidebar {
+      padding: 40px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .app-sidebar-link {
+      color: var(--main-color);
+      margin: 16px 0;
+      transition: 0.2s;
+      border-radius: 50%;
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app-sidebar-link:hover {
+      background-color: var(--link-color-hover);
+      color: var(--link-color-active);
+    }
+
+    .app-sidebar-link.active {
+      color: var(--link-color-active);
+    }
+
+   .profile-container {
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    width: 1290px;
+    height: 514px;
+    max-height: 80vh;
+ margin-top: 88px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    margin-left: 64px;
+    position: fixed;
+    color: white;
+}
+
+    .profile-header {
+      text-align: center;
+    }
+
+    .profile-header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #cb9f5e;
+    }
+
+    .edit-picture {
+      margin-top: 10px;
+      color: #cb9f5e;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .edit-picture:hover {
+      text-decoration: underline;
+    }
+
+    .profile-field {
+      margin-top: 20px;
+    }
+
+    .profile-field label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #cb9f5e;
+    }
+
+    .profile-field input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #3a3a3a;
+      border-radius: 4px;
+      background-color: #2c2c2c;
+      color: white;
+      font-size: 14px;
+    }
+
+    .profile-field input:focus {
+      border-color: #cb9f5e;
+      outline: none;
+    }
+
+    .save-btn {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #cb9f5e;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .save-btn:hover {
+      background-color: #a47f47;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div class="app-header">
+      <div class="app-header-left">  <div class="app-header-right">
+        <a href="" class="app-sidebar-link">
+  <svg
+    class="link-icon"
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    stroke="#CB9F5E"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+  >
+    <defs />
+    <!-- Circle for the profile icon -->
+    <circle cx="12" cy="12" r="10" stroke="#CB9F5E" fill="none" />
+    <!-- Head (circle) -->
+    <circle cx="12" cy="9" r="3" fill="#CB9F5E" />
+    <!-- Shoulders -->
+    <path
+      d="M6 17c0-3 4-4.5 6-4.5s6 1.5 6 4.5"
+      fill="none"
+      stroke="#CB9F5E"
+    />
+  </svg>
+</a>
+
+        <p class="app-name" style="color: white;">Profile Setting</p>
+      </div>
+      
+    </div>
+<button class="notification-btn">
+<a href="notifiaction panel.html ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"stroke="#CB9F5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
+       
+</a>
+</div>
+
+
+    <div class="app-content">
+      <div class="app-sidebar">
+        <a href="index.html" class="app-sidebar-link active">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"stroke="#CB9F5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" /></svg>
+        </a>
+      <a href="" class="app-sidebar-link">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#CB9F5E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-pie-chart" viewBox="0 0 24 24">
+            <defs />
+            <path d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z" />
+          </svg>
+        </a>
+
+        <a href="" class="app-sidebar-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#CB9F5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" /></svg>
+        </a>
+        <a href="" class="app-sidebar-link">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#CB9F5E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-settings" viewBox="0 0 24 24">
+            <defs />
+            <circle cx="12" cy="12" r="3" />
+            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+<div class="profile-container">
+    <div class="profile-header">
+      <img src="https://assets.codepen.io/3306515/IMG_2025.jpg" alt="User Picture" id="user-picture">
+      <div>
+        <span class="edit-picture" onclick="document.getElementById('picture-input').click()">Edit Picture</span>
+        <input type="file" id="picture-input" style="display: none;" onchange="previewPicture(event)">
+      </div>
+    </div>
+
+    <div class="profile-field">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Areeba Faiz">
+    </div>
+
+    <div class="profile-field">
+      <label for="current-password">Current Password</label>
+      <input type="password" id="current-password" placeholder="i@te!ceCre@m">
+    </div>
+
+    <div class="profile-field">
+      <label for="new-password">New Password</label>
+      <input type="password" id="new-password" placeholder="Enter new password">
+    </div>
+
+    <button class="save-btn">Save Changes</button>
+  </div>
+  </div>
+</body>
+</html>
