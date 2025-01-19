@@ -64,40 +64,83 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const logo = document.getElementById("logo");
-            const navbar = document.getElementById("navbar");
-            const loginSection = document.getElementById("login");
-            const logoSound = document.getElementById("logo-sound");
-            const footer = document.getElementById("footer");
+    const logo = document.getElementById("logo");
+    const navbar = document.getElementById("navbar");
+    const loginSection = document.getElementById("login");
+    const logoSound = document.getElementById("logo-sound");
+    const footer = document.getElementById("footer");
+    const loginButton = loginSection.querySelector("button");
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+    const rememberMeCheckbox = document.getElementById("remember-me");
 
-            logo.addEventListener("click", () => {
-                // Play sound
-                logoSound.play();
+    // Simulated user database (Replace with API integration)
+    const users = [
+        { email: "test@example.com", password: "123456", name: "John Doe" },
+    ];
 
-                // Show and animate navbar
-                navbar.style.display = "flex";
-                navbar.style.transform = "translateY(0)";
+    // Show Navbar, Login Form, and Footer on Logo Click
+    logo.addEventListener("click", () => {
+        logoSound.play();
 
-                // Move logo up
-                logo.style.animation = "none"; // Reset animation
-                setTimeout(() => {
-                    logo.style.marginTop = "100px";
-                    logo.style.transition = "margin 1s ease-in-out";
-                }, 100);
+        // Show and animate navbar
+        navbar.style.display = "flex";
+        navbar.style.transform = "translateY(0)";
 
-                // Show login form with animation
-                loginSection.style.display = 'block';
-                setTimeout(() => {
-                    loginSection.style.opacity = '1';
-                    loginSection.querySelector('form').style.transform = 'translateY(0)';
-                }, 100);
+        // Animate logo
+        logo.style.animation = "none";
+        setTimeout(() => {
+            logo.style.marginTop = "100px";
+            logo.style.transition = "margin 1s ease-in-out";
+        }, 100);
 
-                // Show footer after a delay (e.g., 5 seconds)
-                setTimeout(() => {
-                    footer.style.display = "block";
-                }, 5000);
-            });
-        });
+        // Show login form
+        loginSection.style.display = "block";
+        setTimeout(() => {
+            loginSection.style.opacity = "1";
+            loginSection.querySelector("form").style.transform = "translateY(0)";
+        }, 100);
+
+        // Show footer
+        setTimeout(() => {
+            footer.style.display = "block";
+        }, 5000);
+    });
+
+    // Login Form Validation and Authentication
+    loginButton.addEventListener("click", () => {
+        const email = usernameInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        if (!email || !password) {
+            alert("Please fill in all fields!");
+            return;
+        }
+
+        // Validate user credentials
+        const user = users.find((u) => u.email === email && u.password === password);
+        if (user) {
+            // Save session if "Remember Me" is checked
+            if (rememberMeCheckbox.checked) {
+                localStorage.setItem("user", JSON.stringify(user));
+            }
+
+            // Redirect to dashboard
+            alert(`Welcome back, ${user.name}!`);
+            window.location.href = "userdashboard.html";
+        } else {
+            alert("Invalid email or password.");
+        }
+    });
+
+    // Maintain Login State (if "Remember Me" was checked)
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+        const user = JSON.parse(savedUser);
+        alert(`Welcome back, ${user.name}!`);
+        window.location.href = "userdashboard.html";
+    }
+});
     </script>
 </body>
 </html>
