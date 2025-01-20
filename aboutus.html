@@ -66,6 +66,25 @@ Browse our site to explore courses, meet our dedicated team, and discover how we
     <footer style="text-align: center;color: #cb9f5e;">
         <p>&copy; 2025 All Rights Reserved.</p>
     </footer>
+<script>>
+    // Add smooth scrolling effect
+    document.querySelectorAll('a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            document.getElementById(targetId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+const links = document.querySelectorAll('.nav-link');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                links.forEach(link => link.classList.remove('active')); // Remove active from all links
+                link.classList.add('active'); // Add active class to clicked link
+            });
+        });
 
+</script>
 </body>
 </html>
