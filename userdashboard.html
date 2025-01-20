@@ -644,62 +644,9 @@ body {
 <footer style="text-align: center; color: #cb9f5e;">
         <p>&copy; 2025 All Rights Reserved.</p>
     </footer>
-  <script>
 
-// JavaScript for User Dashboard Interactivity
-
-// Function to toggle active state for sidebar links
-const sidebarLinks = document.querySelectorAll('.app-sidebar-link');
-sidebarLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        sidebarLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-    });
-});
-
-// Functionality for the "Add New Project" button
-const addBtn = document.querySelector('.add-btn');
-addBtn.addEventListener('click', () => {
-    alert('Add New Project feature is not implemented yet!');
-});
-
-// Functionality for the "Notification" button
-const notificationBtn = document.querySelector('.notification-btn');
-notificationBtn.addEventListener('click', () => {
-    alert('Notification panel feature is not implemented yet!');
-});
-
-// Grid View functionality
-const gridViewBtn = document.querySelector('.grid-view');
-const projectBoxes = document.querySelector('.project-boxes');
-
-gridViewBtn.addEventListener('click', () => {
-    if (!gridViewBtn.classList.contains('active')) {
-        gridViewBtn.classList.add('active');
-        projectBoxes.classList.add('jsGridView');
-    }
-});
-
-// Example function to simulate progress update for a course
-function updateCourseProgress(courseName, newProgress) {
-    const projectBoxes = document.querySelectorAll('.project-box');
-    projectBoxes.forEach(box => {
-        const header = box.querySelector('.box-content-header');
-        if (header && header.textContent === courseName) {
-            const progressBar = box.querySelector('.box-progress');
-            const progressPercentage = box.querySelector('.box-progress-percentage');
-
-            if (progressBar && progressPercentage) {
-                progressBar.style.width = `${newProgress}%`;
-                progressPercentage.textContent = `${newProgress}%`;
-            }
-        }
-    });
-}
-
-// Example usage of updateCourseProgress
-updateCourseProgress('Graphic Designing', 75);
-document.getElementById("add-course-form").addEventListener("submit", function(event) {
+<scipt>
+ document.getElementById("add-course-form").addEventListener("submit", function(event) {
     event.preventDefault();
     
     // Get the form data
@@ -730,9 +677,7 @@ document.getElementById("add-course-form").addEventListener("submit", function(e
     // Clear the form fields
     document.getElementById("add-course-form").reset();
 });
-
-</script>
-
+</scipt>
 
   </div>
 </html>
