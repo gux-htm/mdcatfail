@@ -258,6 +258,71 @@
     <footer style="text-align: center; color: #cb9f5e; position: relative; margin-top: 50px;">
         <p>&copy; 2025 All Rights Reserved.</p>
     </footer>
+<script>
+// JavaScript for MDCAT Courses Page
 
+// Function to handle navigation highlight on scroll
+document.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+
+    let currentSection = '';
+
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 50;
+        if (window.scrollY >= sectionTop) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach((link) => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(currentSection)) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Function to handle "Enroll Now" button click
+document.querySelectorAll('button a').forEach((button) => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+        const errorPage = event.target.getAttribute('href');
+        window.location.href = errorPage;
+    });
+});
+
+// Function to dynamically add new courses (Example for extensibility)
+const addCourse = (course) => {
+    const courseContainer = document.querySelector('section > div');
+
+    const courseHTML = `
+        <div style="flex: 1 1 calc(33.333% - 20px); max-width: calc(33.333% - 20px); border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; background-color:#222;">
+            <img src="${course.image}" alt="Course Image" style="width: 100%; height: auto;">
+            <div style="padding: 15px;">
+                <h2 style="margin: 0 0 10px; font-size: 20px; color: #cb9f5e;">${course.title}</h2>
+                <p style="margin: 0 0 18px; font-size: 14px; color: white">${course.description}</p>
+                <p style="margin: 0 0 15px; font-size: 14px; color: white">Fee: ${course.fee}</p>
+                <button style="display: block; width: 100%; padding: 10px; font-size: 16px; background-color: #007bff; border: none; border-radius: 4px; cursor: pointer;">
+                    <a href="error.html" style="color: #fff; text-decoration: none;">Enroll Now</a>
+                </button>
+            </div>
+        </div>
+    `;
+
+    courseContainer.innerHTML += courseHTML;
+};
+
+// Example to dynamically add a course
+addCourse({
+    title: 'Advanced JavaScript',
+    description: 'Master the art of JavaScript with in-depth concepts and projects.',
+    fee: '$80',
+    image: 'https://i.pinimg.com/736x/01/2b/3c/012b3c0c34d2a7d9133f3407342ddc4d.jpg',
+});
+
+
+
+</script>
 </body>
 </html>
