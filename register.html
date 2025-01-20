@@ -467,6 +467,44 @@
     <footer style="text-align: center; color: #cb9f5e; position: relative; margin-top: 50px;">
         <p>&copy; 2025 All Rights Reserved.</p>
     </footer>
+<script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+    const profilePictureInput = document.querySelector("input[name='profilePicture']");
+    const passwordInput = document.querySelector("input[name='password']");
+    const emailInput = document.querySelector("input[name='email']");
+    const submitButton = document.querySelector("button[type='submit']");
 
+    // Validate Password
+    passwordInput.addEventListener("input", () => {
+      const password = passwordInput.value;
+      const passwordHint = passwordInput.nextElementSibling;
+      if (password.length < 8 || !/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/\d/.test(password) || !/[^A-Za-z0-9]/.test(password)) {
+        passwordHint.style.color = "red";
+      } else {
+        passwordHint.style.color = "#cb9f5e";
+      }
+    });
+
+    // Validate Email
+    emailInput.addEventListener("input", () => {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(emailInput.value)) {
+        emailInput.style.borderColor = "red";
+      } else {
+        emailInput.style.borderColor = "green";
+      }
+    });
+
+    // Handle Form Submission
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const firstName = form.elements["firstName"].value;
+      const lastName = form.elements["lastName"].value;
+      const salutation = 
+
+</script>
 </body>
 </html>
