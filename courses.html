@@ -320,6 +320,51 @@ addCourse({
     fee: '$80',
     image: 'https://i.pinimg.com/736x/01/2b/3c/012b3c0c34d2a7d9133f3407342ddc4d.jpg',
 });
+function addCourse(courseImage, courseName, description, fee) {
+    const coursesContainer = document.querySelector('section div');
+    
+    const courseDiv = document.createElement('div');
+    courseDiv.style = "flex: 1 1 calc(33.333% - 20px); max-width: calc(33.333% - 20px); border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; background-color:#222;";
+    
+    const img = document.createElement('img');
+    img.src = courseImage;
+    img.alt = "Course Image";
+    img.style = "width: 100%; height: auto;";
+    
+    const contentDiv = document.createElement('div');
+    contentDiv.style = "padding: 15px;";
+    
+    const courseTitle = document.createElement('h2');
+    courseTitle.textContent = courseName;
+    courseTitle.style = "margin: 0 0 10px; font-size: 20px; color: #cb9f5e;";
+    
+    const courseDescription = document.createElement('p');
+    courseDescription.textContent = description;
+    courseDescription.style = "margin: 0 0 18px; font-size: 14px; color: white";
+    
+    const courseFee = document.createElement('p');
+    courseFee.textContent = `Fee: $${fee}`;
+    courseFee.style = "margin: 0 0 15px; font-size: 14px; color: white";
+    
+    const enrollButton = document.createElement('button');
+    enrollButton.style = "display: block; width: 100%; padding: 10px; font-size: 16px; background-color: #007bff; border: none; border-radius: 4px; cursor: pointer;";
+    const buttonLink = document.createElement('a');
+    buttonLink.href = "error.html";
+    buttonLink.style = "color: #fff; text-decoration: none;";
+    buttonLink.textContent = "Enroll Now";
+    
+    enrollButton.appendChild(buttonLink);
+    
+    contentDiv.appendChild(courseTitle);
+    contentDiv.appendChild(courseDescription);
+    contentDiv.appendChild(courseFee);
+    contentDiv.appendChild(enrollButton);
+    
+    courseDiv.appendChild(img);
+    courseDiv.appendChild(contentDiv);
+    
+    coursesContainer.appendChild(courseDiv);
+}
 
 
 
