@@ -472,7 +472,12 @@ body {
     <div class="projects-section" style="background-color: black;">
       <div class="projects-section-header">
         <p  style="color:#CB9F5E;">Courses</p>
-        <p class="time;" style="color:#CB9F5E;">January, 16</p>
+      <script>
+    // Get the current date
+    const currentDate = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('date').textContent = currentDate.toLocaleDateString('en-US', options);
+  </script>
       </div>
       <div class="projects-section-line">
         <div class="projects-status">
