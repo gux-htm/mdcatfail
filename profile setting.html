@@ -350,5 +350,43 @@ background-color:black;
     <button class="save-btn">Save Changes</button>
   </div>
   </div>
+
+<script>
+
+// Profile Picture Preview
+function previewPicture(event) {
+  const reader = new FileReader();
+  const file = event.target.files[0];
+
+  if (file) {
+    reader.onload = function (e) {
+      const userPicture = document.getElementById('user-picture');
+      userPicture.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+// Save Changes Button Functionality
+document.querySelector('.save-btn').addEventListener('click', function () {
+  const username = document.getElementById('username').value.trim();
+  const currentPassword = document.getElementById('current-password').value;
+  const newPassword = document.getElementById('new-password').value;
+
+  if (!username || !currentPassword || !newPassword) {
+    alert('Please fill out all fields before saving.');
+    return;
+  }
+
+  // Example: Logging the updated information
+  console.log('Updated Information:');
+  console.log('Username:', username);
+  console.log('Current Password:', currentPassword);
+  console.log('New Password:', newPassword);
+
+  alert('Changes have been saved successfully!');
+});
+
+</script>
 </body>
 </html>
