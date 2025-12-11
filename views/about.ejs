@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+</head>
+<body style="font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: black; color: white;">
+
+      <!-- Navigation Menu -->
+      <%- include('partials/header') %>
+
+
+    <!-- Introduction Section -->
+    <section style="text-align: center; padding: 30px 20px;">
+        <h1 style="color: #cb9f5e;">Welcome to Our Website!</h1>
+        <p style="font-size: 1.2em; line-height: 1.5; max-width: 800px; margin: 0 auto;">
+            Are you a proud member of the IWelcome to the Future of Opportunity?
+At our platform, we believe every setback is a setup for a comeback. If MDCAT didn't go as planned, don’t worry—we’re here to help you explore an exciting alternative path in Computer Science.
+
+Our mission is to empower you with the skills and knowledge to unlock your potential and achieve your dreams. With a team of experienced professionals and a dedication to excellence, we provide tailored courses, expert guidance, and a supportive community to help you succeed.
+
+Browse our site to explore courses, meet our dedicated team, and discover how we can help you turn challenges into opportunities and build a brighter future.
+
+
+        </p>
+    </section>
+
+      <!-- Profile Row -->
+<div style="display: flex; justify-content: space-between; align-items: center; text-align: center; padding: 20px; flex-wrap: nowrap; gap: 20px;">
+    <!-- First Profile -->
+    <div style="width: 30%; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; background-color: #222; padding: 20px; border-radius: 10px;">
+        <h1 style="color: #cb9f5e;">CEO</h1>
+        <img src="https://i.postimg.cc/L51BTmgD/1000038264.jpg" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 2px solid #cb9f5e;">
+        <h1 style="font-family: 'Lora', serif; margin: 10px 0; color: white;">
+            <a href="/about/gulraiz" style="color: #cb9f5e; text-decoration: none;">Gulraiz <em>Khan</em></a>
+        </h1>
+    </div>
+
+    <!-- Second Profile -->
+    <div style="width: 30%; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; background-color: #222; padding: 20px; border-radius: 10px;">
+        <h1 style="color: #cb9f5e;">CFO</h1>
+        <img src="https://i.postimg.cc/YCHKQ9LX/1732548087724-ae43f4a7-f126-e873-597a-9eb6ea75feb2-removebg-preview.png" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 2px solid #cb9f5e;">
+        <h1 style="font-family: 'Lora', serif; margin: 10px 0; color: white;">
+            <a href="/about/shahwaiz" style="color: #cb9f5e; text-decoration: none;">Shahwaiz<em> Ahmad</em></a>
+        </h1>
+    </div>
+
+    <!-- Third Profile -->
+    <div style="width: 30%; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; background-color: #222; padding: 20px; border-radius: 10px;">
+        <h1 style="color: #cb9f5e;">COO</h1>
+        <img src="https://i.postimg.cc/jqv91X9r/1000042333-removebg-preview.png" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 2px solid #cb9f5e;">
+        <h1 style="font-family: 'Lora', serif; margin: 10px 0; color: white;">
+            <a href="/about/wahab" style="color: #cb9f5e; text-decoration: none;"> Abdul <em>Wahab</em></a>
+        </h1>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+
+<script>
+    // Add smooth scrolling effect
+    document.querySelectorAll('a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            // Only apply for internal links starting with #
+            if (this.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                document.getElementById(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    const links = document.querySelectorAll('.nav-link');
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            links.forEach(link => link.classList.remove('active')); // Remove active from all links
+            link.classList.add('active'); // Add active class to clicked link
+        });
+    });
+
+</script>
+</body>
+</html>

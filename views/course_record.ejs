@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Records | MDCAT Fail</title>
+    <style>
+        body { font-family: 'DM Sans', sans-serif; background: #f3f6fd; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 30px; border-radius: 20px; }
+        h1 { color: #cb9f5e; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #ddd; }
+        th { background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <br><br><br>
+    <div class="container">
+        <h1>Records for: <%= course.title %></h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Email</th>
+                    <th>Enrollment Date</th>
+                    <th>Progress</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (enrollments.length > 0) { %>
+                    <% enrollments.forEach(function(enrollment) { %>
+                        <tr>
+                            <td><%= enrollment.student.firstName %> <%= enrollment.student.lastName %></td>
+                            <td><%= enrollment.student.email %></td>
+                            <td><%= enrollment.enrollmentDate.toDateString() %></td>
+                            <td><%= enrollment.progress %>%</td>
+                            <td><%= enrollment.status %></td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr><td colspan="5">No students enrolled yet.</td></tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+    <%- include('partials/footer') %>
+</body>
+</html>

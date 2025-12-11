@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile | MDCAT Fail</title>
+    <style>
+        body { font-family: 'DM Sans', sans-serif; background: #f3f6fd; color: #1f1c2e; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .header { display: flex; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 20px; }
+        .header img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-right: 20px; }
+        .info { flex: 1; }
+        .info h1 { margin: 0; color: #cb9f5e; }
+        .streak { background: #ff942e; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; display: inline-flex; align-items: center; gap: 5px; }
+        form label { display: block; margin-top: 15px; font-weight: bold; }
+        form input, form textarea { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px; }
+        button { margin-top: 20px; padding: 10px 20px; background: #cb9f5e; color: black; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <br><br><br>
+    <div class="container">
+        <div class="header">
+            <img src="<%= user.profilePicture %>" alt="Profile">
+            <div class="info">
+                <h1><%= user.firstName %> <%= user.lastName %></h1>
+                <p>Role: <%= user.role %></p>
+                <div class="streak">🔥 Streak: <%= user.streak || 0 %> Days</div>
+            </div>
+        </div>
+
+        <form action="/profile/update" method="POST">
+            <label>Bio</label>
+            <textarea name="bio" rows="4"><%= user.bio || '' %></textarea>
+
+            <label>Goals / Objectives</label>
+            <textarea name="goals" rows="4"><%= user.goals || '' %></textarea>
+
+            <% if (user.role === 'teacher') { %>
+                <label>Qualifications</label>
+                <textarea name="qualifications" rows="4"><%= user.qualifications || '' %></textarea>
+            <% } %>
+
+            <button type="submit">Update Profile</button>
+        </form>
+    </div>
+    <%- include('partials/footer') %>
+</body>
+</html>

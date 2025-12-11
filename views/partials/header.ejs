@@ -1,0 +1,13 @@
+<nav id="navbar" style="background-color: #222; padding: 10px 0; position: fixed; top: 0; width: 100%; display: flex; justify-content: center; gap: 10px; transform: translateY(-100%); transition: transform 1s ease-in-out; display: none;">
+    <a href="/" style="color: #cb9f5e; text-decoration: none;">Home</a>
+    <a href="/courses" style="color: #cb9f5e; text-decoration: none;">Courses</a>
+    <a href="/auth/register" style="color: #cb9f5e; text-decoration: none;">Register</a>
+    <a href="/about" style="color: #cb9f5e; text-decoration: none;">About Us</a>
+    <a href="/contact" style="color: #cb9f5e; text-decoration: none;">Contact Us</a>
+    <% if (user) { %>
+        <a href="/dashboard" style="color: #cb9f5e; text-decoration: none;">Dashboard</a>
+        <a href="/auth/logout" style="color: #cb9f5e; text-decoration: none;">Logout</a>
+    <% } else { %>
+        <a href="/auth/login" style="color: #cb9f5e; text-decoration: none;">Login</a>
+    <% } %>
+</nav>
