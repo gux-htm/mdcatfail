@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDCAT Fail register</title>
+<link rel="icon" href="https://i.postimg.cc/cJzdRhcZ/M-pe.png">
+</head>
+<body style="font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: black; color: white;">
+
+      <!-- Navigation Menu -->
+      <%- include('partials/header') %>
+
+    <!-- Logo -->
+    <header>
+        <img id="logo" src="https://i.postimg.cc/cJzdRhcZ/M-pe.png" alt="Logo" style="width: 90%; max-width: 500px; margin-left:35%">
+
+    </header>
+        <!-- Login Form Section -->
+ <section id="login" style="margin: 100px auto; width: 90%; max-width: 400px; text-align: left;">
+        <form action="/auth/register" method="POST" style="background-color: rgba(255,255,255,0.13); border-radius: 10px; backdrop-filter: blur(10px); border: 2px solid rgba(255,255,255,0.1); box-shadow: 0 0 40px rgba(8,7,16,0.6); padding: 40px;" enctype="multipart/form-data">
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 500; line-height: 42px; text-align: center; color: #ffffff; margin-bottom: 20px;">Create Account</h3>
+        <fieldset style="border: none; padding: 0;">
+            <legend style="font-size: 1.2rem; font-weight: bold; color: #cb9f5e;">Personal Details</legend>
+
+           <label style="display: block; margin: 10px 0; text-align: left;">
+    Upload Your Picture:
+    <input type="file" name="profilePicture" style="width: 100%; padding: 10px; background-color: #555; color: white; border: none; border-radius: 4px; margin-top: 5px;" />
+</label>
+            <!-- Salutation -->
+            <label style="display: block; margin: 10px 0; text-align: left;">
+                Salutation
+                <select name="salutation" style="width: 100%; padding: 10px; background-color: #555; color: white; border: none; border-radius: 4px; margin-top: 5px;">
+                    <option>--None--</option>
+                    <option>Mr.</option>
+                    <option>Ms.</option>
+                    <option>Mrs.</option>
+                    <option>Dr.</option>
+                </select>
+            </label>
+
+            <!-- First Name -->
+            <label style="display: block; margin: 10px 0; text-align: left;">
+                First name: <input name="firstName" required style="width: 100%; padding: 10px; background-color: #555; color: white; border: none; border-radius: 4px; margin-top: 5px;" />
+            </label>
+
+            <!-- Last Name -->
+            <label style="display: block; margin: 10px 0; text-align: left;">
+                Last name: <input name="lastName" required style="width: 100%; padding: 10px; background-color: #555; color: white; border: none; border-radius: 4px; margin-top: 5px;" />
+            </label>
+
+            <!-- Gender -->
+            <label style="display: block; margin: 10px 0; text-align: left;">
+                Gender:
+                <input type="radio" name="gender" value="male" required style="margin-left: 10px;" /> Male
+                <input type="radio" name="gender" value="female" required style="margin-left: 10px;" /> Female
+            </label>
+
+            <!-- Email -->
+            <label style="display: block; margin: 10px 0; text-align: left;">
+                Email: <input type="email" name="email" required style="width: 100%; padding: 10px; background-color: #555; color: white; border: none; border-radius: 4px; margin-top: 5px;" />
+            </label>
+
+
+            <!-- Password -->
+            <label>
+                Password:
+                <input type="password" name="password" placeholder="At least 8 characters" minlength="8" required />
+                <small style="color: #cb9f5e;">Use a mix of uppercase, lowercase, numbers, and symbols.</small>
+            </label>
+
+            <!-- Phone Number -->
+            <label style="display: block; margin: 10px 0; text-align: left;">
+                Phone Number:
+                <select style="width: 100%; padding: 10px; background-color: #555; color: white; border: none; border-radius: 4px; margin-top: 5px;">
+    <option value=" " selected>Select a country</option>
+     <option value="+93">🇦🇫 +93</option>
+        <option value="+355">🇦🇱 +355</option>
+        <option value="+213">🇩🇿 +213</option>
+        <option value="+376">🇦🇩 +376</option>
+        <option value="+244">🇦🇴 +244</option>
+        <option value="+54">🇦🇷 +54</option>
+        <option value="+374">🇦🇲 +374</option>
+        <option value="+297">🇦🇼 +297</option>
+        <option value="+61">🇦🇺 +61</option>
+        <option value="+43">🇦🇹 +43</option>
+        <option value="+994">🇦🇿 +994</option>
+        <option value="+1">🇧🇸 +1</option>
+        <option value="+973">🇧🇭 +973</option>
+        <option value="+880">🇧🇩 +880</option>
+        <option value="+1">🇧🇧 +1</option>
+        <option value="+375">🇧🇾 +375</option>
+        <option value="+32">🇧🇪 +32</option>
+        <option value="+501">🇧🇿 +501</option>
+        <option value="+229">🇧🇯 +229</option>
+        <option value="+975">🇧🇹 +975</option>
+        <option value="+591">🇧🇴 +591</option>
+        <option value="+387">🇧🇦 +387</option>
+        <option value="+267">🇧🇼 +267</option>
+        <option value="+55">🇧🇷 +55</option>
+        <option value="+359">🇧🇬 +359</option>
+        <option value="+226">🇧🇫 +226</option>
+        <option value="+257">🇧🇮 +257</option>
+        <option value="+855">🇰🇭 +855</option>
+        <option value="+237">🇨🇲 +237</option>
+        <option value="+1">🇨🇦 +1</option>
+        <option value="+238">🇨🇻 +238</option>
+        <option value="+345">🇰🇾 +345</option>
+        <option value="+56">🇨🇱 +56</option>
+        <option value="+86">🇨🇳 +86</option>
+        <option value="+57">🇨🇴 +57</option>
+        <option value="+269">🇰🇲 +269</option>
+        <option value="+242">🇨🇬 +242</option>
+        <option value="+243">🇨🇩 +243</option>
+        <option value="+506">🇨🇷 +506</option>
+        <option value="+225">🇨🇮 +225</option>
+        <option value="+385">🇭🇷 +385</option>
+        <option value="+53">🇨🇺 +53</option>
+        <option value="+357">🇨🇾 +357</option>
+        <option value="+420">🇨🇿 +420</option>
+        <option value="+45">🇩🇰 +45</option>
+        <option value="+253">🇩🇯 +253</option>
+        <option value="+1">🇩🇲 +1</option>
+        <option value="+670">🇩🇴 +670</option>
+        <option value="+593">🇪🇨 +593</option>
+        <option value="+20">🇪🇬 +20</option>
+        <option value="+503">🇸🇻 +503</option>
+        <option value="+240">🇬🇶 +240</option>
+        <option value="+291">🇪🇷 +291</option>
+        <option value="+372">🇪🇪 +372</option>
+        <option value="+251">🇪🇹 +251</option>
+        <option value="+500">🇬🇸 +500</option>
+        <option value="+298">🇬🇮 +298</option>
+        <option value="+1">🇬🇧 +1</option>
+        <option value="+224">🇬🇳 +224</option>
+        <option value="+245">🇬🇼 +245</option>
+        <option value="+595">🇬🇾 +595</option>
+        <option value="+509">🇭🇹 +509</option>
+        <option value="+504">🇭🇳 +504</option>
+        <option value="+36">🇭🇺 +36</option>
+        <option value="+354">🇮🇸 +354</option>
+        <option value="+91">🇮🇳 +91</option>
+        <option value="+62">🇮🇩 +62</option>
+        <option value="+98">🇮🇷 +98</option>
+        <option value="+964">🇮🇶 +964</option>
+        <option value="+353">🇮🇪 +353</option>
+
+        <option value="+1">🇯🇲 +1</option>
+        <option value="+81">🇯🇵 +81</option>
+        <option value="+962">🇯🇴 +962</option>
+        <option value="+7">🇰🇿 +7</option>
+        <option value="+254">🇰🇪 +254</option>
+        <option value="+686">🇰🇮 +686</option>
+        <option value="+965">🇰🇼 +965</option>
+        <option value="+996">🇰🇬 +996</option>
+        <option value="+856">🇱🇸 +856</option>
+        <option value="+961">🇱🇧 +961</option>
+        <option value="+231">🇱🇸 +231</option>
+        <option value="+370">🇱🇹 +370</option>
+        <option value="+352">🇱🇺 +352</option>
+        <option value="+853">🇲🇴 +853</option>
+        <option value="+389">🇲🇰 +389</option>
+        <option value="+261">🇲🇬 +261</option>
+        <option value="+265">🇲🇼 +265</option>
+        <option value="+60">🇲🇾 +60</option>
+        <option value="+960">🇲🇻 +960</option>
+        <option value="+223">🇲🇱 +223</option>
+        <option value="+356">🇲🇹 +356</option>
+        <option value="+230">🇲🇺 +230</option>
+        <option value="+262">🇲🇷 +262</option>
+        <option value="+1">🇲🇽 +1</option>
+        <option value="+373">🇲🇩 +373</option>
+        <option value="+382">🇲🇪 +382</option>
+        <option value="+261">🇲🇬 +261</option>
+        <option value="+223">🇲🇱 +223</option>
+        <option value="+1">🇳🇿 +1</option>
+        <option value="+977">🇳🇵 +977</option>
+        <option value="+31">🇳🇱 +31</option>
+        <option value="+67">🇳🇷 +67</option>
+        <option value="+47">🇳🇴 +47</option>
+        <option value="+968">🇴🇲 +968</option>
+        <option value="+92">🇵🇰 +92</option>
+        <option value="+680">🇵🇼 +680</option>
+        <option value="+595">🇵🇾 +595</option>
+        <option value="+51">🇵🇪 +51</option>
+        <option value="+63">🇵🇭 +63</option>
+        <option value="+48">🇵🇱 +48</option>
+        <option value="+1">🇵🇷 +1</option>
+        <option value="+970">🇵🇸 +970</option>
+
+        <option value="+1">🇰🇭 +1</option>
+        <option value="+962">🇯🇴 +962</option>
+        <option value="+254">🇰🇪 +254</option>
+        <option value="+59">🇪🇷 +259</option>
+</select>
+
+   </label>
+  <!-- Date of Birth -->
+            <label style="display: block; margin: 10px 0; text-align: left;">
+                Date of Birth: <input type="date" name="birthDate" style="width: 100%; padding: 10px; margin-top: 5px; background-color: #555; color: white; border: none; border-radius: 4px;" />
+            </label>
+
+            <!-- CNIC -->
+            <label style="display: block; margin: 10px 0; text-align: left;">
+                CNIC: <input type="text" name="cnic" style="width: 100%; padding: 10px; margin-top: 5px; background-color: #555; color: white; border: none; border-radius: 4px;" placeholder="XXXXX-XXXXXXX-X" />
+            </label>
+
+            <!-- Address -->
+            <label style="display: block; margin: 10px 0; text-align: left;">
+                Address:
+                <textarea name="address" cols="30" rows="3" style="width: 100%; padding: 10px; margin-top: 5px; background-color: #555; color: white; border: none; border-radius: 4px;"></textarea>
+            </label>
+
+            <!-- Credit Card Details -->
+            <label style="display: block; margin: 10px 0; text-align: left;">
+                Credit Card Details: <input type="text" name="creditCard" style="width: 100%; padding: 10px; margin-top: 5px; background-color: #555; color: white; border: none; border-radius: 4px;" placeholder="XXXX-XXXX-XXXX-XXXX" />
+            </label>
+
+
+            <!-- Submit Button -->
+            <button type="submit" style="width: 100%; padding: 10px; background-color: #cb9f5e; color: black; font-weight: bold; border: none; border-radius: 4px; margin-top: 10px; cursor: pointer;">Sign Up</button>
+        </fieldset>
+       <a href="/" style="color: #ffffff; text-decoration: none;">Already have an account?</a>
+    </form>
+
+    <!-- Footer Section -->
+    <%- include('partials/footer') %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+    const passwordInput = document.querySelector("input[name='password']");
+    const emailInput = document.querySelector("input[name='email']");
+
+    // Validate Password
+    passwordInput.addEventListener("input", () => {
+      const password = passwordInput.value;
+      const passwordHint = passwordInput.nextElementSibling;
+      if (password.length < 8 || !/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/\d/.test(password) || !/[^A-Za-z0-9]/.test(password)) {
+        passwordHint.style.color = "red";
+      } else {
+        passwordHint.style.color = "#cb9f5e";
+      }
+    });
+
+    // Validate Email
+    emailInput.addEventListener("input", () => {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(emailInput.value)) {
+        emailInput.style.borderColor = "red";
+      } else {
+        emailInput.style.borderColor = "green";
+      }
+    });
+  });
+</script>
+</body>
+</html>
